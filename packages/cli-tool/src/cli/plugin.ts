@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import { Plugin as importToCDN, autoComplete } from 'vite-plugin-cdn-import';
-import { createHtmlPlugin } from 'tiger-plugin-html';
+import { createHtmlPlugin } from '@tiger/plugin-html';
 import { CustomConfigProps, ModuleName } from './type';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { PluginOption } from 'vite';
