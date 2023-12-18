@@ -1,0 +1,3 @@
+packages:
+  # 存放组件库和其他工具库
+  - 'packages/*'
