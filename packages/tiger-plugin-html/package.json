@@ -40,7 +40,7 @@
   "bugs": {
     "url": "https://e.coding.net/dreams88/tiger-cli/tiger-cli.git"
   },
-  "homepage": "https://e.coding.net/dreams88/tiger-cli/tiger-cli.git",
+  "homepage": "https://dreams88.coding.net/p/tiger-cli/d/tiger-cli/git/tree/master/packages/tiger-plugin-html/README.MD",
   "dependencies": {
     "@rollup/pluginutils": "^4.2.0",
     "colorette": "^2.0.16",
