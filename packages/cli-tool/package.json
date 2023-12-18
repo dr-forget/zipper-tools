@@ -9,8 +9,8 @@
   "types": "lib/src/cli/cli.d.ts",
   "scripts": {
     "tsc": "tsc -w",
-    "dev": "NODE_ENV=development rollup -c -w",
-    "build": "NODE_ENV=production rollup -c",
+    "dev": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
+    "build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript ",
     "terser": "node minify.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
