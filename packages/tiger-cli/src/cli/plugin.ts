@@ -64,19 +64,6 @@ const insert_plugin = (baseConfig: CustomConfigProps): PluginOption[] => {
     const config_json = merge(common_env_json, env_json, ignore_env_json);
     // 获取html模板路径
     const template_path = path.join(process.cwd(), template || 'index.html');
-    console.log(
-      {
-        minify: true,
-        template: template_path,
-        inject: {
-          data: {
-            ...baseConfig.html_plugin.injectData,
-            injectScript: `<script id="runconfig">window.tigercli_backend = ${JSON.stringify(config_json)}</script>`,
-          },
-        },
-      },
-      76,
-    );
     plugins.push(
       createHtmlPlugin({
         minify: true,

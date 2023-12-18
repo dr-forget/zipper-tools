@@ -9,7 +9,6 @@ export default defineConfig(async (params) => {
   const tigercli_env = JSON.parse(process.env.tigercli_env || '{}');
   const baseConfig = await readRootcliConfig();
   const Allplugins: PluginOption[] = plugins(tigercli_env.stack, baseConfig.config);
-  console.log(Allplugins, 12);
   const default_config: UserConfig = {
     resolve: {
       alias: {

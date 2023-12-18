@@ -21,7 +21,6 @@
   "scripts": {
     "dev": "pnpm unbuild --stub",
     "build": "pnpm unbuild",
-    "prepublishOnly": "npm run build",
     "prepack": "pnpm unbuild"
   },
   "keywords": [
