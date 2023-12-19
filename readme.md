@@ -74,24 +74,28 @@ Create a `tiger-cli` configuration file in the root directory supporting TypeScr
 
 
 
-| Option                | Types                                                        | Default      | Description                                          |
-| --------------------- | ------------------------------------------------------------ | ------------ | ---------------------------------------------------- |
-| `vueIsJsx`            | `bool`                                                       | `false`      | Enable JSX support in Vue mode                       |
-| `analyzeDependencies` | `object`                                                     |              | Dependency analysis configuration                    |
-|                       | `bool`                                                       | `false`      | - `enable`: Enable dependency analysis               |
-|                       | `bool`                                                       | `false`      | - `open`: Automatically open the analysis panel      |
-| `polyfill`            | `object`                                                     |              | Configuration for compatibility with older browsers  |
-|                       | `bool`                                                       | `false`      | - `enable`: Enable compatibility with older versions |
-|                       | `string[]`                                                   | `['ie>=11']` | - `targets`: Target browser versions                 |
-| `html_plugin`         | `object`                                                     |              | HTML injection configuration                         |
-|                       | `bool`                                                       | `false`      | - `enable`: Enable HTML injection                    |
-|                       | `string`                                                     | `index.html` | - `template`: HTML template entry                    |
-|                       | `object`                                                     | `{}`         | - `injectData`: Data to be injected                  |
-| `package_cdn`         | `object`                                                     |              | Module CDN import                                    |
-|                       | `string[]|Module[]`                                          | `[]`         | - `modules`: Modules to import                       |
-|                       | `string`                                                     | `""`         | - `cdnUrl`: CDN address for imported modules         |
-| `custom_vite_config`  | ```({mode,env,isPreview,isSSR})=>UserConfig|Promise<UserConfig>``` | `()=>{}`     | Custom Vite configuration                            |
-|                       | `vite->UserConfig`                                           |              | - Integrates the Vite UserConfig                     |
+| Option                                                       | Types                                                        | Default      | Description                                          |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------ | ---------------------------------------------------- |
+| `vueIsJsx`                                                   | `bool`                                                       | `false`      | Enable JSX support in Vue mode                       |
+| `analyzeDependencies`                                        | `object`                                                     |              | Dependency analysis configuration                    |
+|                                                              | `enable:bool`                                                | `false`      | - `enable`: Enable dependency analysis               |
+|                                                              | `open:bool`                                                  | `false`      | - `open`: Automatically open the analysis panel      |
+| `polyfill`                                                   | `object`                                                     |              | Configuration for compatibility with older browsers  |
+|                                                              | `enable:bool`                                                | `false`      | - `enable`: Enable compatibility with older versions |
+|                                                              | `targets:string[]`                                           | `['ie>=11']` | - `targets`: Target browser versions                 |
+| `html_plugin`                                                | `object`                                                     |              | HTML injection configuration                         |
+| [插件文档地址](https://github.com/dr-forget/tiger-tools/tree/master/packages/tiger-plugin-html#readme) | `enable:bool`                                                | `false`      | - `enable`: Enable HTML injection                    |
+|                                                              | `template:string`                                            | `index.html` | - `template`: HTML template entry                    |
+|                                                              | `injectData:object`                                          | `{}`         | - `injectData`: Data to be injected                  |
+| `package_cdn`                                                | `object`                                                     |              | Module CDN import                                    |
+|                                                              | `modules:string[]|Module[]`                                  | `[]`         | - `modules`: Modules to import                       |
+|                                                              | `cdnUrl:string`                                              | `""`         | - `cdnUrl`: CDN address for imported modules         |
+| `isAutoComponent`                                            | `object`                                                     | `{}`         | Automatic on-demand import of component libraries    |
+| [文档地址](https://github.com/unplugin/unplugin-vue-components/blob/main/README.md) | `dts:bool`                                                   | `false`      | Do I need to generate typescript declaration files   |
+|                                                              | `dirs:string[]`                                              | `[]`         | Folders for automatic component import               |
+|                                                              | `resolvers:ComponentResolver|ComponentResolver[]`            | `[]`         | Third-party Component Library                        |
+| `custom_vite_config`                                         | ```({mode,env,isPreview,isSSR})=>UserConfig|Promise<UserConfig>``` | `()=>{}`     | Custom Vite configuration                            |
+|                                                              | `vite->UserConfig`                                           |              | - Integrates the Vite UserConfig                     |
 
 
 
