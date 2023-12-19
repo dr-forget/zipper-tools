@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { pathToFileURL } from 'url';
+import chalk from 'chalk';
 import baseConfig from './base.config';
 import crypto from 'crypto';
 import { buildSync } from 'esbuild';
@@ -114,4 +114,15 @@ export const isStringArray = (arr: any[]) => {
   }
 
   return true; // 是数组并且数组中的元素都是字符串类型
+};
+
+// 判断cli是否能运行该项目
+export const isRunCli = () => {
+  const stack = getTechnologyStack();
+  if (!stack) {
+    console.log(chalk.red("暂不支持的技术栈,当前仅支持['vue','react']"));
+    return false;
+  }
+  console.log(chalk.green('current technology stack is ' + stack));
+  return stack;
 };
