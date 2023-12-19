@@ -90,7 +90,7 @@ Create a `tiger-cli` configuration file in the root directory supporting TypeScr
 | `package_cdn`         | `object`                                                     |              | Module CDN import                                    |
 |                       | `string[]|Module[]`                                          | `[]`         | - `modules`: Modules to import                       |
 |                       | `string`                                                     | `""`         | - `cdnUrl`: CDN address for imported modules         |
-| `custom_vite_config`  | `({mode,env,isPreview,isSSR})=>UserConfig|Promise<UserConfig>` | `()=>{}`     | Custom Vite configuration                            |
+| `custom_vite_config`  | ```({mode,env,isPreview,isSSR})=>UserConfig|Promise<UserConfig>``` | `()=>{}`     | Custom Vite configuration                            |
 |                       | `vite->UserConfig`                                           |              | - Integrates the Vite UserConfig                     |
 
 

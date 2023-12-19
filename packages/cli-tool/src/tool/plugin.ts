@@ -4,9 +4,11 @@ import react from '@vitejs/plugin-react';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
-import { Plugin as importToCDN, autoComplete } from 'vite-plugin-cdn-import';
+import importToCDN, { autoComplete } from '@tiger/plugin-cdn-import';
+import AutoComponents from 'unplugin-vue-components/vite';
+import { ModuleName } from '@tiger/plugin-cdn-import/dist/auto-complete';
 import { createHtmlPlugin } from '@tiger/plugin-html';
-import { CustomConfigProps, ModuleName } from './type';
+import { CustomConfigProps } from './type';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { PluginOption } from 'vite';
 import { merge } from 'lodash-es';
@@ -34,9 +36,9 @@ const read_backend_envconfig = (fileName: string) => {
   return {};
 };
 
-const insert_plugin = (baseConfig: CustomConfigProps): PluginOption[] => {
+const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConfigProps): PluginOption[] => {
   const plugins: PluginOption[] = [];
-  if (baseConfig.vueIsJsx) {
+  if (baseConfig.vueIsJsx && technology_stack === 'vue') {
     plugins.push(vueJsx());
   }
   if (baseConfig.analyzeDependencies.enable) {
@@ -101,13 +103,16 @@ const insert_plugin = (baseConfig: CustomConfigProps): PluginOption[] => {
       }),
     );
   }
+  if (baseConfig.isAutoComponent && technology_stack == 'vue') {
+    plugins.push(AutoComponents({ ...baseConfig.isAutoComponent }));
+  }
   return plugins;
 };
 
 export const plugins = (technology_stack: 'vue' | 'react', baseConfig: CustomConfigProps): PluginOption[] => {
   const stack_plugins = stackPlugins(technology_stack);
   // 根据配置文件插入插件
-  const insert_plugins = insert_plugin(baseConfig);
+  const insert_plugins = insert_plugin(technology_stack, baseConfig);
 
   return stack_plugins.concat(insert_plugins);
 };

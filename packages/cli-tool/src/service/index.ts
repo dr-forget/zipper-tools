@@ -6,7 +6,7 @@ export class Service {
   async start() {
     //获取项目路径
     const prod_project_path = fileURLToPath(import.meta.url);
-    const config_root = join(dirname(prod_project_path), "../cli/vite.config.mjs");
+    const config_root = join(dirname(prod_project_path), "../tool/vite.config.mjs");
     const server = await createServer({
       // 任何合法的用户配置选项，加上 `mode` 和 `configFile`
       configFile: config_root,

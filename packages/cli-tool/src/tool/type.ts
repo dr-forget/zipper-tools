@@ -1,10 +1,7 @@
 import { UserConfig, ConfigEnv } from 'vite';
-export interface Module {
-  name: string;
-  var: string;
-  path: string | string[];
-  css?: string | string[];
-}
+import { Module } from '@tiger/plugin-cdn-import/dist/type';
+import { ModuleName } from '@tiger/plugin-cdn-import/dist/auto-complete';
+import { Options } from 'unplugin-vue-components';
 export interface CustomConfigProps {
   vueIsJsx: boolean;
   analyzeDependencies: {
@@ -30,26 +27,6 @@ export interface CustomConfigProps {
     modules: ModuleName[] | Array<(prodUrl: string) => Module>;
     cdnUrl?: string;
   };
+  isAutoComponent:Options;
   custom_vite_config: (data: ConfigEnv) => UserConfig | Promise<UserConfig>;
 }
-
-export type ModuleName =
-  | 'react'
-  | 'react-dom'
-  | 'react-router-dom'
-  | 'antd'
-  | 'ahooks'
-  | '@ant-design/charts'
-  | 'vue'
-  | 'vue2'
-  | '@vueuse/shared'
-  | '@vueuse/core'
-  | 'moment'
-  | 'eventemitter3'
-  | 'file-saver'
-  | 'browser-md5-file'
-  | 'xlsx'
-  | 'axios'
-  | 'lodash'
-  | 'crypto-js'
-  | 'localforage';

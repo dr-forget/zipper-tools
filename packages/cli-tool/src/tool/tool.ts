@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { pathToFileURL } from 'url';
 import baseConfig from './base.config';
+import crypto from 'crypto';
 import { buildSync } from 'esbuild';
 import { merge } from 'lodash-es';
 
@@ -8,6 +10,14 @@ interface IConfigFile {
   filepath: string;
   filetype: 'ts' | 'js';
 }
+
+// 获取文件指纹
+export const getFileMD5 = (filePath: string) => {
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const md5 = crypto.createHash('md5');
+  md5.update(fileContent);
+  return md5.digest('hex');
+};
 
 export const checkConfigFileExists = (filename: string): IConfigFile | null => {
   const tsFilePath = path.resolve(process.cwd(), `${filename}.ts`);
@@ -44,20 +54,21 @@ const runTsConfig = async (config: IConfigFile) => {
       contents: fileContent,
       loader: 'ts',
     },
-    format: 'cjs',
+    format: 'esm',
     write: false, // 不写入文件，仅转译
   });
   const transpiledCode = result.outputFiles[0].text;
-  // 创建新的函数
-  const jsConfig = new Function('module', transpiledCode);
-  // 调用新创建的函数
-  const moduleExports = {
-    exports: {
-      default: {},
-    },
-  };
-  jsConfig(moduleExports);
-  return moduleExports.exports.default;
+  let config_root: string = path.join(process.cwd(), 'node_modules/@tiger/cli/tiger-config.mjs');
+  if (!fs.existsSync(config_root)) {
+    config_root = path.join(process.cwd(), 'node_modules/tiger-config.mjs');
+  }
+  fs.writeFileSync(config_root, transpiledCode, 'utf-8');
+
+  const tscode = await import(config_root);
+
+  fs.unlinkSync(config_root);
+
+  return tscode.default || {};
 };
 
 const RunJsConfig = async (config: IConfigFile) => {
