@@ -39,12 +39,6 @@ importers:
 
   packages/cli-tool:
     dependencies:
-      '@tiger/plugin-cdn-import':
-        specifier: workspace:^
-        version: link:../tiger-plugin-cdn-import
-      '@tiger/plugin-html':
-        specifier: workspace:^
-        version: link:../tiger-plugin-html
       '@vitejs/plugin-legacy':
         specifier: ^5.2.0
         version: 5.2.0(terser@5.26.0)(vite@5.0.10)
@@ -57,6 +51,12 @@ importers:
       '@vitejs/plugin-vue-jsx':
         specifier: ^3.1.0
         version: 3.1.0(vite@5.0.10)(vue@3.3.12)
+      '@zippybee/plugin-cdn-import':
+        specifier: workspace:^
+        version: link:../zippybee-plugin-cdn-import
+      '@zippybee/plugin-html':
+        specifier: workspace:^
+        version: link:../zippybee-plugin-html
       chalk:
         specifier: ^5.3.0
         version: 5.3.0
@@ -83,6 +83,70 @@ importers:
         version: 0.9.1(rollup@4.9.1)
 
   packages/tiger-plugin-html:
+    dependencies:
+      '@rollup/pluginutils':
+        specifier: ^4.2.0
+        version: 4.2.1
+      colorette:
+        specifier: ^2.0.16
+        version: 2.0.20
+      connect-history-api-fallback:
+        specifier: ^1.6.0
+        version: 1.6.0
+      consola:
+        specifier: ^2.15.3
+        version: 2.15.3
+      dotenv:
+        specifier: ^16.0.0
+        version: 16.3.1
+      dotenv-expand:
+        specifier: ^8.0.2
+        version: 8.0.3
+      ejs:
+        specifier: ^3.1.6
+        version: 3.1.9
+      fast-glob:
+        specifier: ^3.2.11
+        version: 3.3.2
+      fs-extra:
+        specifier: ^10.0.1
+        version: 10.1.0
+      html-minifier-terser:
+        specifier: ^6.1.0
+        version: 6.1.0
+      node-html-parser:
+        specifier: ^5.3.3
+        version: 5.4.2
+      pathe:
+        specifier: ^0.2.0
+        version: 0.2.0
+      vite:
+        specifier: '>=5.0.0'
+        version: 5.0.10(@types/node@20.10.5)(terser@5.26.0)
+    devDependencies:
+      '@babel/types':
+        specifier: ^7.17.0
+        version: 7.23.6
+      '@types/ejs':
+        specifier: ^3.1.0
+        version: 3.1.5
+      '@types/fs-extra':
+        specifier: ^9.0.13
+        version: 9.0.13
+      '@types/html-minifier-terser':
+        specifier: ^6.1.0
+        version: 6.1.0
+      unbuild:
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.3.3)
+
+  packages/zippybee-plugin-cdn-import:
+    devDependencies:
+      rollup-plugin-external-globals:
+        specifier: ^0.9.1
+        version: 0.9.1(rollup@4.9.1)
+
+  packages/zippybee-plugin-html:
     dependencies:
       '@rollup/pluginutils':
         specifier: ^4.2.0

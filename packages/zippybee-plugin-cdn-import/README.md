@@ -81,7 +81,7 @@ export default {
 
 ```js
 import vue from '@vitejs/plugin-vue';
-import importToCDN, { autoComplete } from '@tiger/plugin-cdn-import';
+import { importToCDN, autoComplete } from '@zippybee/plugin-cdn-import';
 
 export default {
   plugins: [

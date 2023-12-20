@@ -48,11 +48,10 @@ function renderUrl(
     .replace(/\{path\}/g, path);
 }
 
-function PluginImportToCDN(options: Options): Plugin[] {
+function importToCDN(options: Options): Plugin[] {
   const { modules = [], prodUrl = 'https://cdn.jsdelivr.net/npm/{name}@{version}/{path}' } = options;
 
   let isBuild = false;
-
   const data = modules.map((m) => {
     let v: Module;
     if (typeof m === 'function') {
@@ -154,6 +153,4 @@ function PluginImportToCDN(options: Options): Plugin[] {
   return plugins;
 }
 
-export { PluginImportToCDN, Options, autoComplete };
-
-export default PluginImportToCDN;
+export { importToCDN, Options, autoComplete };

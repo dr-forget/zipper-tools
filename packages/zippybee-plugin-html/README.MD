@@ -1,4 +1,4 @@
-# tiger-plugin-html
+# zippybee-plugin-html
 
 [![npm][npm-img]][npm-url] [![node][node-img]][node-url]
 
