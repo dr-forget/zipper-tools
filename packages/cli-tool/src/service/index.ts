@@ -2,11 +2,24 @@ import { createServer, build, preview } from 'vite';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path, { dirname, join } from 'path';
+
+interface PreviewOptions {
+  mode: 'cli' | 'server';
+  previewUrl?: string;
+  host?: {
+    port: number;
+    open: boolean;
+  };
+}
+
 export class Service {
   public config_root: string;
+  public buildConfig_root: string;
   constructor() {
     const prod_project_path = fileURLToPath(import.meta.url);
     this.config_root = join(dirname(prod_project_path), '../tool/vite.config.mjs');
+    const meta_url = fileURLToPath(import.meta.url);
+    this.buildConfig_root = path.join(path.dirname(meta_url), '../build.json');
   }
   async start() {
     //获取项目路径
@@ -28,27 +41,38 @@ export class Service {
       // base: './',
       configFile: this.config_root,
     });
+    const build_config = JSON.parse(fs.readFileSync(this.buildConfig_root, 'utf-8'));
+    if (build_config.build_open) {
+      this.preview({
+        mode: 'server',
+        previewUrl: path.join(process.cwd(), './analysis'),
+        host: {
+          port: 7702,
+          open: true,
+        },
+      });
+    }
   }
-  async preview(mode: 'cli' | 'server', previewUrl?: string) {
+  async preview({ mode, previewUrl, host }: PreviewOptions) {
     let outdir = previewUrl || '';
     if (mode === 'cli') {
       // 获取build.json
-      const meta_url = fileURLToPath(import.meta.url);
-      const url = path.join(path.dirname(meta_url), '../build.json');
-      if (!fs.existsSync(url)) {
+      if (!fs.existsSync(this.buildConfig_root)) {
         console.log('use tiger build first');
         return;
       }
-      const build_config = JSON.parse(fs.readFileSync(url, 'utf-8'));
+      const build_config = JSON.parse(fs.readFileSync(this.buildConfig_root, 'utf-8'));
       outdir = build_config.outDir;
     }
     const previewServer = await preview({
+      configFile: false,
       build: {
         outDir: outdir,
       },
       preview: {
-        port: 8080,
-        open: true,
+        port: host?.port || 7001,
+        open: host?.open || false,
+        host: true,
       },
     });
 

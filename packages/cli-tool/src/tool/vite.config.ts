@@ -26,7 +26,7 @@ export default defineConfig(async (params) => {
       assetsDir: 'static/image',
       target: tigercli_env.target,
       outDir: tigercli_env.output_path,
-      minify: true,
+      minify: 'terser',
       rollupOptions: {
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',
@@ -50,7 +50,9 @@ export default defineConfig(async (params) => {
   if (params.command === 'build') {
     const meta_url = fileURLToPath(import.meta.url);
     const url = path.join(path.dirname(meta_url), '../build.json');
-    fs.writeFileSync(url, JSON.stringify(merge_Config.build, null, 2));
+    // 依赖分析打包 是否自动打开浏览
+    const isopen = baseConfig.config.analyzeDependencies.enable && baseConfig.config.analyzeDependencies.open;
+    fs.writeFileSync(url, JSON.stringify({ ...merge_Config.build, build_open: isopen }, null, 2));
   }
   return merge_Config;
 });

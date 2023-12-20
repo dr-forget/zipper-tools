@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import react from '@vitejs/plugin-react';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
-import importToCDN, { autoComplete } from '@tiger/plugin-cdn-import';
+import { importToCDN, autoComplete } from '@zippybee/plugin-cdn-import';
 import AutoComponents from 'unplugin-vue-components/vite';
-import { ModuleName } from '@tiger/plugin-cdn-import/dist/auto-complete';
-import { createHtmlPlugin } from '@tiger/plugin-html';
+import { ModuleName } from '@zippybee/plugin-cdn-import/dist/auto-complete';
+import { createHtmlPlugin } from '@zippybee/plugin-html';
 import { CustomConfigProps } from './type';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { PluginOption } from 'vite';
@@ -45,7 +46,9 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
     plugins.push(
       visualizer({
         emitFile: false,
-        open: baseConfig.analyzeDependencies.open,
+        brotliSize: true,
+        gzipSize: true,
+        filename: 'analysis/index.html',
       }),
     );
   }
@@ -92,7 +95,7 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
     plugins.push(
       importToCDN({
         modules: config_modules,
-        prodUrl: cdnUrl || '',
+        prodUrl: cdnUrl || 'https://cdn.jsdelivr.net/npm/{name}@{version}/{path}',
       }),
     );
   }

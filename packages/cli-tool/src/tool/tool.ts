@@ -3,6 +3,7 @@ import path from 'path';
 import chalk from 'chalk';
 import baseConfig from './base.config';
 import crypto from 'crypto';
+import { CustomConfigProps } from './type';
 import { buildSync } from 'esbuild';
 import { merge } from 'lodash-es';
 
@@ -65,7 +66,6 @@ const runTsConfig = async (config: IConfigFile) => {
   fs.writeFileSync(config_root, transpiledCode, 'utf-8');
 
   const tscode = await import(config_root);
-
   fs.unlinkSync(config_root);
 
   return tscode.default || {};
@@ -77,7 +77,7 @@ const RunJsConfig = async (config: IConfigFile) => {
 };
 
 // 读取根目录下的配置文件
-export const readRootcliConfig = async () => {
+export const readRootcliConfig = async (): Promise<{ isrunCustomFn: boolean; config: CustomConfigProps }> => {
   const cliConfig_root = checkConfigFileExists('tiger-cli');
   // 如果存在该配置文件则读取配置文件
   if (cliConfig_root) {

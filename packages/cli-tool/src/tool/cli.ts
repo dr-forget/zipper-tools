@@ -64,17 +64,25 @@ program
 program
   .command('preview [root]')
   .description('preview for production')
-  .option('-o, --outDir <dir>', `[string] output directory (default: dist)`)
+  .option('-p, --port <port>', 'port used by the server (default: 7001)')
+  .option('--open, --open <open>', '[bool] Automatically open browser (default: false)')
   .action(async (root, cmd) => {
-    if (cmd.outDir) {
-      const output_path = path.resolve(process.cwd(), cmd.outDir || 'dist');
+    if (root) {
+      const output_path = path.resolve(process.cwd(), root || 'dist');
       if (!fs.existsSync(output_path)) {
         console.log('目录不存在');
         return;
       }
-      new Service().preview('server', output_path);
+      new Service().preview({
+        mode: 'server',
+        previewUrl: output_path,
+        host: {
+          port: cmd.port || 7001,
+          open: cmd.open || false,
+        },
+      });
       return;
     }
-    new Service().preview('cli');
+    new Service().preview({ mode: 'cli' });
   });
 program.parse(process.argv);

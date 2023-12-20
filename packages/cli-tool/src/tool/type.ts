@@ -1,6 +1,6 @@
 import { UserConfig, ConfigEnv } from 'vite';
-import { Module } from '@tiger/plugin-cdn-import/dist/type';
-import { ModuleName } from '@tiger/plugin-cdn-import/dist/auto-complete';
+import { Module } from '@zippybee/plugin-cdn-import/dist/type';
+import { ModuleName } from '@zippybee/plugin-cdn-import/dist/auto-complete';
 import { Options } from 'unplugin-vue-components';
 export interface CustomConfigProps {
   vueIsJsx: boolean;
@@ -27,6 +27,6 @@ export interface CustomConfigProps {
     modules: ModuleName[] | Array<(prodUrl: string) => Module>;
     cdnUrl?: string;
   };
-  isAutoComponent:Options;
+  isAutoComponent: Options;
   custom_vite_config: (data: ConfigEnv) => UserConfig | Promise<UserConfig>;
 }
