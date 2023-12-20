@@ -20,7 +20,7 @@ const config: CustomConfigProps = {
     enable: false,
     template: 'index.html',
     injectData: {
-      title: 'tiger-cli Vite',
+      title: 'zippybee-cli Vite',
     },
   },
   package_cdn: {

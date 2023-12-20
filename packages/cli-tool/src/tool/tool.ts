@@ -59,9 +59,9 @@ const runTsConfig = async (config: IConfigFile) => {
     write: false, // 不写入文件，仅转译
   });
   const transpiledCode = result.outputFiles[0].text;
-  let config_root: string = path.join(process.cwd(), 'node_modules/@tiger/cli/tiger-config.mjs');
+  let config_root: string = path.join(process.cwd(), 'node_modules/@zippybee/cli/zippybee-config.mjs');
   if (!fs.existsSync(config_root)) {
-    config_root = path.join(process.cwd(), 'node_modules/tiger-config.mjs');
+    config_root = path.join(process.cwd(), 'node_modules/zippybee-config.mjs');
   }
   fs.writeFileSync(config_root, transpiledCode, 'utf-8');
 
@@ -78,7 +78,7 @@ const RunJsConfig = async (config: IConfigFile) => {
 
 // 读取根目录下的配置文件
 export const readRootcliConfig = async (): Promise<{ isrunCustomFn: boolean; config: CustomConfigProps }> => {
-  const cliConfig_root = checkConfigFileExists('tiger-cli');
+  const cliConfig_root = checkConfigFileExists('zippybee-cli');
   // 如果存在该配置文件则读取配置文件
   if (cliConfig_root) {
     const config = await RunCliConfig(cliConfig_root);

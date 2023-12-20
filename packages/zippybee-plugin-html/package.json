@@ -29,17 +29,17 @@
     "minify",
     "vite-plugin"
   ],
-  "author": "tiger-cli",
+  "author": "zippybee-cli",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://e.coding.net/dreams88/tiger-cli/tiger-cli.git",
+    "url": "https://e.coding.net/dreams88/zippybee-cli/zippybee-cli.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://e.coding.net/dreams88/tiger-cli/tiger-cli.git"
+    "url": "https://e.coding.net/dreams88/zippybee-cli/zippybee-cli.git"
   },
-  "homepage": "https://dreams88.coding.net/p/tiger-cli/d/tiger-cli/git/tree/master/packages/tiger-plugin-html/README.MD",
+  "homepage": "https://dreams88.coding.net/p/zippybee-cli/d/zippybee-cli/git/tree/master/packages/zippybee-plugin-html/README.MD",
   "dependencies": {
     "@rollup/pluginutils": "^4.2.0",
     "colorette": "^2.0.16",

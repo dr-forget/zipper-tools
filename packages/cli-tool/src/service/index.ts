@@ -58,7 +58,7 @@ export class Service {
     if (mode === 'cli') {
       // 获取build.json
       if (!fs.existsSync(this.buildConfig_root)) {
-        console.log('use tiger build first');
+        console.log('use zippybee build first');
         return;
       }
       const build_config = JSON.parse(fs.readFileSync(this.buildConfig_root, 'utf-8'));

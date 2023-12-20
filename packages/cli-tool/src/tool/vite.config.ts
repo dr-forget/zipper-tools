@@ -7,9 +7,9 @@ import fs from 'fs';
 
 export default defineConfig(async (params) => {
   let config: UserConfig = {};
-  const tigercli_env = JSON.parse(process.env.tigercli_env || '{}');
+  const zippybeecli_env = JSON.parse(process.env.zippybeecli_env || '{}');
   const baseConfig = await readRootcliConfig();
-  const Allplugins: PluginOption[] = plugins(tigercli_env.stack, baseConfig.config);
+  const Allplugins: PluginOption[] = plugins(zippybeecli_env.stack, baseConfig.config);
   const default_config: UserConfig = {
     resolve: {
       alias: {
@@ -17,15 +17,15 @@ export default defineConfig(async (params) => {
       },
     },
     server: {
-      port: tigercli_env.port,
+      port: zippybeecli_env.port,
       host: true,
       hmr: true,
     },
     plugins: Allplugins,
     build: {
       assetsDir: 'static/image',
-      target: tigercli_env.target,
-      outDir: tigercli_env.output_path,
+      target: zippybeecli_env.target,
+      outDir: zippybeecli_env.output_path,
       minify: 'terser',
       rollupOptions: {
         output: {

@@ -25,7 +25,7 @@ program
       stack: isRun,
     };
     process.env.NODE_ENV = cmd.NODE_ENV || 'development';
-    process.env.tigercli_env = JSON.stringify(env_obj);
+    process.env.zippybeecli_env = JSON.stringify(env_obj);
     new Service().start();
   });
 
@@ -57,7 +57,7 @@ program
       output_path: output_path,
     };
     process.env.NODE_ENV = cmd.NODE_ENV || 'production';
-    process.env.tigercli_env = JSON.stringify(env_obj);
+    process.env.zippybeecli_env = JSON.stringify(env_obj);
     new Service().build();
   });
 

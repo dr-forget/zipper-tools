@@ -56,9 +56,9 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
   if (baseConfig.html_plugin.enable) {
     const { config, template } = baseConfig.html_plugin;
     // 读取配置文件
-    const tigercli_env = JSON.parse(process.env.tigercli_env || '{}');
+    const zippybeecli_env = JSON.parse(process.env.zippybeecli_env || '{}');
     // 获取当前运行的环境变量
-    const env = tigercli_env.backend_env;
+    const env = zippybeecli_env.backend_env;
     // 读取公共配置文件
     const common_env_json = config?.commonfileName ? read_backend_envconfig(config?.commonfileName || '') : {};
     // 当前环境变量配置信息
@@ -76,7 +76,7 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
         inject: {
           data: {
             ...baseConfig.html_plugin.injectData,
-            injectScript: `<script id="runconfig">window.tigercli_backend = ${JSON.stringify(config_json)}</script>`,
+            injectScript: `<script id="runconfig">window.zippybeecli_backend = ${JSON.stringify(config_json)}</script>`,
           },
         },
       }),

@@ -76,13 +76,13 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0(rollup@4.9.1)(vue@3.3.12)
 
-  packages/tiger-plugin-cdn-import:
+  packages/zippybee-plugin-cdn-import:
     devDependencies:
       rollup-plugin-external-globals:
         specifier: ^0.9.1
         version: 0.9.1(rollup@4.9.1)
 
-  packages/tiger-plugin-html:
+  packages/zippybee-plugin-html:
     dependencies:
       '@rollup/pluginutils':
         specifier: ^4.2.0

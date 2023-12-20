@@ -1,6 +1,6 @@
-# Tiger-CLI
+# zippybee-CLI
 
-Tiger-CLI is a command-line interface tool developed based on Vite 5.0. It allows for rapid setup of project architectures supporting Vue 3, React, and more, out-of-the-box without requiring extensive configuration.
+zippybee-CLI is a command-line interface tool developed based on Vite 5.0. It allows for rapid setup of project architectures supporting Vue 3, React, and more, out-of-the-box without requiring extensive configuration.
 
 - 💡 支持项目多环境配置
 - 🛠️ 构建打包的依赖分析
@@ -13,13 +13,13 @@ Tiger-CLI is a command-line interface tool developed based on Vite 5.0. It allow
 ### Using npm
 
 ```bash
-npm i @tiger-cli -g
+npm i @zippybee-cli -g
 ```
 
 ### Using pnpm
 
 ```bash
-pnpm install @tiger-cli -g
+pnpm install @zippybee-cli -g
 ```
 
 ## Usage
@@ -29,13 +29,13 @@ pnpm install @tiger-cli -g
 To scaffold a Vite + Vue project:
 
 ```bash
-tiger-cli create --vue  #vue
+zippybee-cli create --vue  #vue
 ```
 
 To scaffold a Vite + React project:
 
 ```bash
-tiger-cli create --react #react
+zippybee-cli create --react #react
 ```
 
 ## Run Development Server
@@ -66,7 +66,7 @@ npm run dev
 
 ## Custom Configuration
 
-Create a `tiger-cli` configuration file in the root directory supporting TypeScript (ts) and ECMAScript modules (mjs). The CLI only supports configuration files following ECMAScript standards due to its reliance on Vite 5.0, which will eventually deprecate CommonJS (cjs) APIs.
+Create a `zippybee-cli` configuration file in the root directory supporting TypeScript (ts) and ECMAScript modules (mjs). The CLI only supports configuration files following ECMAScript standards due to its reliance on Vite 5.0, which will eventually deprecate CommonJS (cjs) APIs.
 
 
 
@@ -84,7 +84,7 @@ Create a `tiger-cli` configuration file in the root directory supporting TypeScr
 |                                                              | `enable:bool`                                                | `false`      | - `enable`: Enable compatibility with older versions |
 |                                                              | `targets:string[]`                                           | `['ie>=11']` | - `targets`: Target browser versions                 |
 | `html_plugin`                                                | `object`                                                     |              | HTML injection configuration                         |
-| [插件文档地址](https://github.com/dr-forget/tiger-tools/tree/master/packages/tiger-plugin-html#readme) | `enable:bool`                                                | `false`      | - `enable`: Enable HTML injection                    |
+| [插件文档地址](https://github.com/dr-forget/zippybee-tools/tree/master/packages/zippybee-plugin-html#readme) | `enable:bool`                                                | `false`      | - `enable`: Enable HTML injection                    |
 |                                                              | `template:string`                                            | `index.html` | - `template`: HTML template entry                    |
 |                                                              | `injectData:object`                                          | `{}`         | - `injectData`: Data to be injected                  |
 | `package_cdn`                                                | `object`                                                     |              | Module CDN import                                    |
@@ -103,5 +103,5 @@ Create a `tiger-cli` configuration file in the root directory supporting TypeScr
 This project is licensed under the [License Name] - see the LICENSE file for details.
 
 
-This Markdown document outlines the Tiger-CLI tool, including installation, usage, CLI commands, custom configuration options in a tabular format, guidelines for contributing, and licensing information. Adjust the placeholders like `[License Name]`, `[link-to-issues]`, and `[link-to-license-file]` with appropriate details.
+This Markdown document outlines the zippybee-CLI tool, including installation, usage, CLI commands, custom configuration options in a tabular format, guidelines for contributing, and licensing information. Adjust the placeholders like `[License Name]`, `[link-to-issues]`, and `[link-to-license-file]` with appropriate details.
 
