@@ -29,8 +29,8 @@ export const stackPlugins = (technology_stack: 'vue' | 'react'): PluginOption[] 
   return stack_plugins[technology_stack] || [];
 };
 
-const read_backend_envconfig = (fileName: string) => {
-  const env_path = path.join(process.cwd(), `/config/${fileName}.json`);
+const read_backend_envconfig = (shortpath: string) => {
+  const env_path = path.join(process.cwd(), shortpath);
   if (fs.existsSync(env_path)) {
     return JSON.parse(fs.readFileSync(env_path, 'utf-8'));
   }
@@ -60,13 +60,15 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
     // 获取当前运行的环境变量
     const env = zippybeecli_env.backend_env;
     // 读取公共配置文件
-    const common_env_json = config?.commonfileName ? read_backend_envconfig(config?.commonfileName || '') : {};
+    const common_env_json = config?.commonfileName ? read_backend_envconfig(`/config/${config?.commonfileName}.json`) : {};
     // 当前环境变量配置信息
-    const env_json = read_backend_envconfig(env);
+    const env_json = read_backend_envconfig(`/config/${env}.json`);
     // 读取忽略配置文件
-    const ignore_env_json = config?.ignorefileName ? read_backend_envconfig(config?.ignorefileName || '') : {};
+    const ignore_env_json = config?.ignorefileName ? read_backend_envconfig(`/config/${config?.ignorefileName}.json`) : {};
     // 合并配置
     const config_json = merge(common_env_json, env_json, ignore_env_json);
+    // 获取package.json
+    const pkg = read_backend_envconfig('package.json');
     // 获取html模板路径
     const template_path = path.join(process.cwd(), template || 'index.html');
     plugins.push(
@@ -76,7 +78,11 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
         inject: {
           data: {
             ...baseConfig.html_plugin.injectData,
-            injectScript: `<script id="runconfig">window.zippybeecli_backend = ${JSON.stringify(config_json)}</script>`,
+            injectScript: `<script id="runconfig">window.zippybeecli_backend = ${JSON.stringify({
+              ...config_json,
+              buildTime: +new Date(),
+              version: pkg.version,
+            })}</script>`,
           },
         },
       }),
