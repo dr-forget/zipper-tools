@@ -76,13 +76,13 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0(rollup@4.9.1)(vue@3.3.12)
 
-  packages/zippybee-plugin-cdn-import:
+  packages/tiger-plugin-cdn-import:
     devDependencies:
       rollup-plugin-external-globals:
         specifier: ^0.9.1
         version: 0.9.1(rollup@4.9.1)
 
-  packages/zippybee-plugin-html:
+  packages/tiger-plugin-html:
     dependencies:
       '@rollup/pluginutils':
         specifier: ^4.2.0
@@ -141,7 +141,7 @@ importers:
         version: 2.0.0(typescript@5.3.3)
 
   packages/zippybee-plugin-cdn-import:
-    devDependencies:
+    dependencies:
       rollup-plugin-external-globals:
         specifier: ^0.9.1
         version: 0.9.1(rollup@4.9.1)
@@ -2722,7 +2722,6 @@ packages:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
     dependencies:
       '@types/estree': 1.0.5
-    dev: true
 
   /esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
@@ -2954,7 +2953,6 @@ packages:
     resolution: {integrity: sha512-v3rht/LgVcsdZa3O2Nqs+NMowLOxeOm7Ay9+/ARQ2F+qEoANRcqrjAZKGN0v8ymUetZGgkp26LTnGT7H0Qo9Pg==}
     dependencies:
       '@types/estree': 1.0.5
-    dev: true
 
   /is-wsl@2.2.0:
     resolution: {integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==}
@@ -3665,7 +3663,6 @@ packages:
       is-reference: 3.0.2
       magic-string: 0.30.5
       rollup: 4.9.1
-    dev: true
 
   /rollup-plugin-visualizer@5.11.0(rollup@4.9.1):
     resolution: {integrity: sha512-exM0Ms2SN3AgTzMeW7y46neZQcyLY7eKwWAop1ZoRTCZwyrIRdMMJ6JjToAJbML77X/9N8ZEpmXG4Z/Clb9k8g==}

@@ -1,9 +1,6 @@
-import fs from 'fs';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 import { cleandir } from 'rollup-plugin-cleandir';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 export default {
   input: ['src/index.ts'], // 输入文件路径
