@@ -1,7 +1,7 @@
 import { CustomConfigProps } from './type';
 const config: CustomConfigProps = {
   //vue 是否开启jsx支持 默认不开启
-  vueIsJsx: true,
+  vueIsJsx: false,
   //  是否分析依赖包大小
   analyzeDependencies: {
     //    是否开启
@@ -20,7 +20,7 @@ const config: CustomConfigProps = {
     enable: false,
     template: 'index.html',
     injectData: {
-      title: 'zippybee-cli Vite',
+      title: 'Zippy Vite',
     },
   },
   package_cdn: {

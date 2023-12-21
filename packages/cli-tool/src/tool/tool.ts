@@ -78,7 +78,7 @@ const RunJsConfig = async (config: IConfigFile) => {
 
 // 读取根目录下的配置文件
 export const readRootcliConfig = async (): Promise<{ isrunCustomFn: boolean; config: CustomConfigProps }> => {
-  const cliConfig_root = checkConfigFileExists('zippybee-cli');
+  const cliConfig_root = checkConfigFileExists('zippy.config');
   // 如果存在该配置文件则读取配置文件
   if (cliConfig_root) {
     const config = await RunCliConfig(cliConfig_root);

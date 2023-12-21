@@ -106,7 +106,7 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
       }),
     );
   }
-  if (baseConfig.isAutoComponent && technology_stack == 'vue') {
+  if (baseConfig.isAutoComponent && baseConfig.isAutoComponent.resolvers?.length && technology_stack == 'vue') {
     plugins.push(AutoComponents({ ...baseConfig.isAutoComponent }));
   }
   return plugins;

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "zippybee": "lib/tool/cli.mjs"
+    "zippy": "lib/tool/cli.mjs"
   },
   "type": "module",
-  "types": "lib/src/tool/cli.d.ts",
+  "types": "lib/tool/type.d.ts",
   "scripts": {
     "tsc": "tsc -w",
     "dev": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
