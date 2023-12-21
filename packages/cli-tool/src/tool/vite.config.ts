@@ -44,7 +44,7 @@ export default defineConfig(async (params) => {
   };
   // 调用用户自定义vite配置
   if (baseConfig.config.custom_vite_config) {
-    config = await baseConfig.config.custom_vite_config({ ...params, env: zippybeecli_env.env });
+    config = await baseConfig.config.custom_vite_config({ ...params, env: zippybeecli_env.backend_env });
   }
   const merge_Config = mergeConfig(default_config, config);
   if (params.command === 'build') {
