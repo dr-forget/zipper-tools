@@ -85,4 +85,27 @@ program
     }
     new Service().preview({ mode: 'cli' });
   });
+program
+  .command('create [root]')
+  .description('create for production')
+  .option('-t, --template <template>', 'temlate is react or vue')
+  .action(async (root, cmd) => {
+    if (root) {
+      const output_path = path.resolve(process.cwd(), root || 'dist');
+      if (!fs.existsSync(output_path)) {
+        console.log('目录不存在');
+        return;
+      }
+      new Service().preview({
+        mode: 'server',
+        previewUrl: output_path,
+        host: {
+          port: cmd.port || 7001,
+          open: cmd.open || false,
+        },
+      });
+      return;
+    }
+    new Service().preview({ mode: 'cli' });
+  });
 program.parse(process.argv);
