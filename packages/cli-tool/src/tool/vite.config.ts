@@ -26,7 +26,7 @@ export default defineConfig(async (params) => {
       assetsDir: 'static/image',
       target: zippybeecli_env.target,
       outDir: zippybeecli_env.output_path,
-      minify: 'terser',
+      minify: 'esbuild',
       rollupOptions: {
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',
@@ -40,6 +40,9 @@ export default defineConfig(async (params) => {
           drop_debugger: true,
         },
       },
+    },
+    esbuild: {
+      drop: params.command == 'build' ? ['console', 'debugger'] : undefined,
     },
   };
   // 调用用户自定义vite配置

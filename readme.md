@@ -103,6 +103,56 @@ Create a `zippy.config.mjs` configuration file in the root directory supporting 
 | `custom_vite_config`                                         | ```({mode,env,isPreview,isSSR})=>UserConfig|Promise<UserConfig>``` | `()=>{}`     | Custom Vite configuration                                    |
 |                                                              | `vite->UserConfig`                                           |              | - Integrates the Vite UserConfig                             |
 
+### 简易配置示例
+
+```typescript
+import { CustomConfigProps } from "@zippybee/cli";
+import { AntDesignVueResolver } from '@zippybee/cli/resolves';
+const config: CustomConfigProps = {
+  //vue 是否开启jsx支持 默认不开启
+  vueIsJsx: false,
+  //  是否分析依赖包大小
+  analyzeDependencies: {
+    //    是否开启
+    enable: false,
+    //    是否默认打开浏览器
+    open: false,
+  },
+  // 是否开启低版本浏览器兼容
+  polyfill: {
+    //    是否开启
+    enable: false,
+    //    是否默认打开浏览器
+    targets: ['ie >= 11'],
+  },
+  html_plugin: {
+    enable: false,
+    template: 'index.html',
+    injectData: {
+      title: 'Zippy Vite',
+    },
+  },
+  package_cdn: {
+    modules: ['vue'], //vue将不参与构建 直接cdn引入
+    cdnUrl: 'https://cdn.jsdelivr.net/npm/{name}@{version}/{path}', //插件默认从jsdelivr引入 可以自行更换
+  },
+  isAutoComponent: { 
+ // 所有配置与插件https://github.com/unplugin/unplugin-vue-components/blob/main/README.md保持一致 所有resolvers 可从@zippybee/cli/resolves 也与unplugin-vue-components保持一致
+    dts: false, 
+    dirs: [],
+    resolvers: [AntDesignVueResolver({importStyle:false})],
+  },
+  // 其他自定义vite配置
+  custom_vite_config: () => {
+    return {};
+  },
+};
+export default config;
+
+```
+
+
+
 ### Migration from existing projects
 
 基于cli 内置了一些插件 从原有的项目迁移到@zippybee/cli  您需要操作以下几个步骤
