@@ -57,5 +57,8 @@ export default defineConfig(async (params) => {
     const isopen = baseConfig.config.analyzeDependencies.enable && baseConfig.config.analyzeDependencies.open;
     fs.writeFileSync(url, JSON.stringify({ ...merge_Config.build, build_open: isopen }, null, 2));
   }
+  if (merge_Config.build.minify !== 'terser' && merge_Config.build.terserOptions) {
+    delete merge_Config.build.terserOptions;
+  }
   return merge_Config;
 });
