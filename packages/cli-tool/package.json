@@ -1,6 +1,6 @@
 {
   "name": "@zippybee/cli",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "bin": {
     "zippy": "lib/tool/cli.mjs"
