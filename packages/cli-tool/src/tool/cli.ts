@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import chalk from 'chalk';
 import { Command } from 'commander';
 import { Service } from '../service';
 import { isRunCli } from './tool';
@@ -115,15 +116,14 @@ program
   .description('init for cli config')
   .action(async (root, cmd) => {
     const template_str = `
-    /**
-     * @typedef {import('@zippybee/cli').CustomConfigProps} CustomConfigProps
-   */
-
-    /** @type {CustomConfigProps} */
-         export default {
-  
-         };
-    `;
+/**
+* @typedef {import('@zippybee/cli').CustomConfigProps} CustomConfigProps
+*/
+    
+/** @type {CustomConfigProps} */
+export default {};
+`;
     fs.writeFileSync(path.resolve(process.cwd(), root || 'zippy.config.mjs'), template_str);
+    console.log(chalk.green(`create zippy.config.mjs success`));
   });
 program.parse(process.argv);
