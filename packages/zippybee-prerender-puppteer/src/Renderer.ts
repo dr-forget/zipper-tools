@@ -178,7 +178,7 @@ export default class PuppeteerRenderer implements IRenderer {
     } catch (e) {
       console.log(chalk.red(`Could not prerender route: ${route}`));
       console.log(chalk.red(`Please check whether the route can be accessed normally and whether it contains redirection. Please handle the redirection page yourself.`));
-      return [];
+      return {};
     } finally {
       await page.close();
     }

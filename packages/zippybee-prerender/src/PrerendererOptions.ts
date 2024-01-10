@@ -24,7 +24,7 @@ export const defaultOptions = {
     listenHost: '127.0.0.1',
     port: 0,
   },
-  renderer: '@prerenderer/renderer-puppeteer',
+  renderer: '@zippybee/prerender-puppteer',
   rendererOptions: {
     headless: true,
   },
@@ -95,7 +95,7 @@ export const schema: JSONSchemaType<Omit<PrerendererOptions, 'server' | 'rendere
       },
     },
     renderer: {
-      description: 'The renderer to use (eg: @prerenderer/renderer-puppeteer or @prerenderer/renderer-jsdom)',
+      description: 'The renderer to use (eg: @zippybee/prerender-puppteer or @prerenderer/renderer-jsdom)',
       anyOf: [
         {
           type: 'string',

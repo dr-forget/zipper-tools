@@ -27,7 +27,7 @@ export const renderStart = async (options: RenderPluginType, outDir: string) => 
   const prerenderer = new Prerenderer({
     ...options,
     staticDir: options.staticDir || '',
-    renderer: new PuppeteerRenderer(merge_render_config) ,
+    renderer: new PuppeteerRenderer(merge_render_config),
   });
 
   try {
@@ -35,9 +35,9 @@ export const renderStart = async (options: RenderPluginType, outDir: string) => 
     await prerenderer.initialize();
     //   渲染路由
     const routers = await prerenderer.renderRoutes(options.routers);
-
     //  遍历路由
     routers.map((route) => {
+      if (!route.html) return;
       // 调用外部函数 格式化内部的html
       const routeItem = options.postProcess ? options.postProcess(route) : route;
       //   获取路由的绝对路径
@@ -62,9 +62,7 @@ export const renderStart = async (options: RenderPluginType, outDir: string) => 
 
       console.log(chalk.green(`render-router:${routeItem.route}`));
     });
-    if (options.routers.length == routers.length) {
-      console.log(chalk.green(`render success`));
-    }
+    console.log(chalk.green(`render success`));
   } catch (e) {
     console.log(e, 'plugin error');
   } finally {

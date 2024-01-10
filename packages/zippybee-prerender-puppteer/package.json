@@ -1,6 +1,6 @@
 {
   "name": "@zippybee/prerender-puppteer",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.mjs",

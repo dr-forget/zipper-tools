@@ -1,11 +1,12 @@
 {
-  "name": "zippybee-plugin-prerender-vite",
+  "name": "@zippybee/plugin-prerender-vite",
   "version": "2.0.0",
   "description": "",
   "module": "lib/index.mjs",
   "main": "lib/index.js",
   "scripts": {
     "dev": "pnpm run start --stub",
+    "build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript ",
     "start": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

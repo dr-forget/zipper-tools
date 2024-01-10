@@ -1,4 +1,4 @@
-### `@prerenderer/renderer-puppeteer` Options
+### `@zippybee/prerender-puppteer` Options
 
 None of the options are required, by default the page will render when puppeteer is ready which is when DOMContentLoaded fires
 
