@@ -19,10 +19,10 @@ export const renderStart = async (options: RenderPluginType, outDir: string) => 
     renderAfterElementExists: 'app', // 等待元素加载后，再渲染
   };
 
-  const merge_render_config = Object.assign(render_config, options.rendererOptions);
+  const merge_render_config = Object.assign(render_config, options.renderOptions);
 
   //   删除 rendererOptions
-  delete options.rendererOptions;
+  delete options.renderOptions;
 
   const prerenderer = new Prerenderer({
     ...options,

@@ -107,7 +107,7 @@ export default () => {
 
         // The actual renderer to use. (Feel free to write your own)
         // Available renderers: https://github.com/Tribex/prerenderer/tree/master/renderers
-        rendererOptions: {
+        renderOptions: {
           // Optional - The name of the property to add to the window object with the contents of `inject`.
           injectProperty: '__PRERENDER_INJECTED',
           // Optional - Any values you'd like your app to have access to via `window.injectProperty`.

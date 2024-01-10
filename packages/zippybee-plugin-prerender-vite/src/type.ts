@@ -7,5 +7,5 @@ export interface RenderPluginType {
   postProcess?: (renderedRoute: any) => any;
   minify?: Record<string, any>;
   server?: Record<string, any>;
-  rendererOptions?: Partial<PuppeteerRendererOptions> ;
+  renderOptions?: Partial<PuppeteerRendererOptions> ;
 }
