@@ -1,0 +1,24 @@
+{
+  "name": "zippybee-plugin-prerender-vite",
+  "version": "2.0.0",
+  "description": "",
+  "module": "lib/index.mjs",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "pnpm run start --stub",
+    "start": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zippybee/prerender": "workspace:^",
+    "@zippybee/prerender-puppteer": "workspace:^",
+    "chalk": "^4.1.2",
+    "mkdirp": "^3.0.1"
+  }
+}

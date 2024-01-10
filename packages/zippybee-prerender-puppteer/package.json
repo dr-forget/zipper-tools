@@ -1,0 +1,33 @@
+{
+  "name": "@zippybee/prerender-puppteer",
+  "version": "2.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "exports": {
+    "import": "./lib/index.mjs",
+    "require": "./lib/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
+    "build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zippybee/prerender": "workspace:^",
+    "@zippybee/prerender-puppteer": "workspace:^",
+    "promise-limit": "^2.7.0",
+    "puppeteer": "^21.7.0",
+    "schema-utils": "4.0.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "ajv": "^8.12.0"
+  }
+}
