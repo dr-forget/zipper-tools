@@ -85,6 +85,7 @@ program
     }
     new Service().preview({ mode: 'cli' });
   });
+
 program
   .command('create [root]')
   .description('create for production')
@@ -107,5 +108,22 @@ program
       return;
     }
     new Service().preview({ mode: 'cli' });
+  });
+// 初始化config文件
+program
+  .command('init [root]')
+  .description('init for cli config')
+  .action(async (root, cmd) => {
+    const template_str = `
+    /**
+     * @typedef {import('@zippybee/cli').CustomConfigProps} CustomConfigProps
+   */
+
+    /** @type {CustomConfigProps} */
+         export default {
+  
+         };
+    `;
+    fs.writeFileSync(path.resolve(process.cwd(), root || 'zippy.config.mjs'), template_str);
   });
 program.parse(process.argv);

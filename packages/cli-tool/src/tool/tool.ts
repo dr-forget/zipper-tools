@@ -21,15 +21,7 @@ export const getFileMD5 = (filePath: string) => {
 };
 
 export const checkConfigFileExists = (filename: string): IConfigFile | null => {
-  const tsFilePath = path.resolve(process.cwd(), `${filename}.ts`);
   const jsFilePath = path.resolve(process.cwd(), `${filename}.mjs`);
-
-  if (fs.existsSync(tsFilePath)) {
-    return {
-      filepath: tsFilePath,
-      filetype: 'ts',
-    };
-  }
   if (fs.existsSync(jsFilePath)) {
     return {
       filepath: jsFilePath,
@@ -40,35 +32,9 @@ export const checkConfigFileExists = (filename: string): IConfigFile | null => {
 };
 
 export const RunCliConfig = (config: IConfigFile) => {
-  if (config.filetype === 'ts') {
-    return runTsConfig(config);
-  }
   if (config.filetype === 'js') {
     return RunJsConfig(config);
   }
-};
-
-const runTsConfig = async (config: IConfigFile) => {
-  const fileContent = fs.readFileSync(config.filepath, 'utf-8');
-  const result = buildSync({
-    stdin: {
-      contents: fileContent,
-      loader: 'ts',
-    },
-    format: 'esm',
-    write: false, // 不写入文件，仅转译
-  });
-  const transpiledCode = result.outputFiles[0].text;
-  let config_root: string = path.join(process.cwd(), 'node_modules/@zippybee/cli/zippybee-config.mjs');
-  if (!fs.existsSync(config_root)) {
-    config_root = path.join(process.cwd(), 'node_modules/zippybee-config.mjs');
-  }
-  fs.writeFileSync(config_root, transpiledCode, 'utf-8');
-
-  const tscode = await import(config_root);
-  fs.unlinkSync(config_root);
-
-  return tscode.default || {};
 };
 
 const RunJsConfig = async (config: IConfigFile) => {
