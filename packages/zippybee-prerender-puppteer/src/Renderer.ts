@@ -102,7 +102,7 @@ export default class PuppeteerRenderer implements IRenderer {
     const baseURL = `http://${rootOptions.server.host}:${rootOptions.server.port}`;
 
     const limiter = promiseLimit<RenderedRoute>(this.options.maxConcurrentRoutes);
-
+    // @ts-ignore
     return Promise.all(routes.map((route) => limiter(() => this.getPageContent(baseURL, route))));
   }
 
@@ -175,6 +175,10 @@ export default class PuppeteerRenderer implements IRenderer {
         html: await page.content(),
       };
       return result;
+    } catch (e) {
+      console.error(`Could not prerender route: ${route}`);
+      console.error(`Please check whether the route can be accessed normally and whether it contains redirection. Please handle the redirection page yourself.`);
+      return [];
     } finally {
       await page.close();
     }

@@ -19,7 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "@zippybee/prerender": "workspace:^",
-    "@zippybee/prerender-puppteer": "workspace:^",
     "promise-limit": "^2.7.0",
     "puppeteer": "^21.7.0",
     "schema-utils": "4.0.0"
