@@ -1,5 +1,5 @@
 import Prerenderer, { IRenderer, RenderedRoute } from '@zippybee/prerender';
-
+import chalk from 'chalk';
 import promiseLimit from 'promise-limit';
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { PuppeteerRendererFinalOptions, PuppeteerRendererOptions, schema, defaultOptions } from './Options';
@@ -176,8 +176,8 @@ export default class PuppeteerRenderer implements IRenderer {
       };
       return result;
     } catch (e) {
-      console.error(`Could not prerender route: ${route}`);
-      console.error(`Please check whether the route can be accessed normally and whether it contains redirection. Please handle the redirection page yourself.`);
+      console.log(chalk.red(`Could not prerender route: ${route}`));
+      console.log(chalk.red(`Please check whether the route can be accessed normally and whether it contains redirection. Please handle the redirection page yourself.`));
       return [];
     } finally {
       await page.close();

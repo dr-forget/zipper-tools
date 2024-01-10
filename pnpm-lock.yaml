@@ -142,9 +142,6 @@ importers:
 
   packages/zippybee-plugin-prerender-vite:
     dependencies:
-      '@prerenderer/renderer-puppeteer':
-        specifier: ^1.2.2
-        version: 1.2.2(puppeteer@21.7.0)
       '@zippybee/prerender':
         specifier: workspace:^
         version: link:../zippybee-prerender
@@ -197,9 +194,9 @@ importers:
       '@zippybee/prerender':
         specifier: workspace:^
         version: link:../zippybee-prerender
-      '@zippybee/prerender-puppteer':
-        specifier: workspace:^
-        version: 'link:'
+      chalk:
+        specifier: '4'
+        version: 4.1.2
       promise-limit:
         specifier: ^2.7.0
         version: 2.7.0
@@ -1662,18 +1659,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@prerenderer/renderer-puppeteer@1.2.2(puppeteer@21.7.0):
-    resolution: {integrity: sha512-tTdhhxrm7sgZC4i6hrDuOwFN3JVLiotgk2NmaLlJbEO+HVgpPbDLPGITNAlNRXlTYHaaHTd11Sdwh1eZoStOMQ==}
-    engines: {node: '>=8.0.0'}
-    peerDependencies:
-      puppeteer: '>= 2'
-    dependencies:
-      deepmerge: 4.3.1
-      promise-limit: 2.7.0
-      puppeteer: 21.7.0(typescript@5.3.3)
-      schema-utils: 4.0.0
-    dev: false
-
   /@puppeteer/browsers@1.9.1:
     resolution: {integrity: sha512-PuvK6xZzGhKPvlx3fpfdM2kYY3P/hB1URtK8wA7XUJ6prn6pp22zvJHu48th0SGcHL9SutbPHrFuQgfXTFobWA==}
     engines: {node: '>=16.3.0'}
@@ -2930,6 +2915,7 @@ packages:
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /define-data-property@1.1.1:
     resolution: {integrity: sha512-E7uGkTzkk1d0ByLeSc6ZsFS79Axg+m1P/VsgYsxHgiuc3tFSj+MjMIwe90FC4lOAZzNBdY7kkO2P2wKdsQ1vgQ==}
