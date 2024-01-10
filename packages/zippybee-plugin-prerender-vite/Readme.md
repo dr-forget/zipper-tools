@@ -236,6 +236,27 @@ postProcess(context) {
 
 ---
 
+## Nginx集成
+
+```
+location / {
+    try_files $uri.html $uri/ /index.html;
+}
+//vue history 模式解决刷新404 //预渲染请复制该代码 
+```
+
+## Apache集成
+
+```
+//.htaccess
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+```
+
+
+
 ## License
 
 MIT
