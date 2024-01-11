@@ -1,6 +1,6 @@
 {
   "name": "@zippybee/plugin-prerender-vite",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "module": "lib/index.mjs",
   "main": "lib/index.js",
@@ -27,7 +27,6 @@
   "license": "ISC",
   "dependencies": {
     "@zippybee/prerender": "workspace:^",
-    "@zippybee/prerender-puppteer": "workspace:^",
     "chalk": "^4.1.2",
     "mkdirp": "^3.0.1"
   }
