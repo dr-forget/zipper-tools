@@ -10,6 +10,7 @@
     "require": "./lib/index.js"
   },
   "scripts": {
+    "prepublishOnly": "pnpm version patch && pnpm run build",
     "dev": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
     "build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript ",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -35,6 +36,14 @@
   "author": "",
   "engines": {
     "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dr-forget/zipper-tools.git"
   },
   "files": [
     "lib"
