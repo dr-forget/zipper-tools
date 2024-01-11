@@ -5,8 +5,6 @@ import chalk from 'chalk';
 import { RenderPluginType } from './type';
 import { mkdirp } from 'mkdirp';
 
-console.log(renderTool, 10);
-
 export const renderStart = async (options: RenderPluginType, outDir: string) => {
   console.log(`All-routers:[${chalk.green(`${options.routers.join(', ')}`)}] `);
 

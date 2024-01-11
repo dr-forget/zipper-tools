@@ -11,8 +11,10 @@
   },
   "scripts": {
     "prepublishOnly": "pnpm version patch && pnpm run build",
-    "dev": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
-    "build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript ",
+    "dev": "pnpm run watch --stub",
+    "build": "pnpm run watch-build --stub",
+    "watch": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
+    "watch-build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
