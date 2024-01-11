@@ -1,11 +1,12 @@
-import Prerenderer, { IRenderer, RenderedRoute } from '@zippybee/prerender';
+import Prerenderer from '../Prerenderer';
 import chalk from 'chalk';
 import promiseLimit from 'promise-limit';
 import puppeteer, { Browser, Page } from 'puppeteer';
+import IRenderer, {  RenderedRoute } from '../IRenderer';
 import { PuppeteerRendererFinalOptions, PuppeteerRendererOptions, schema, defaultOptions } from './Options';
 import { waitForRender, listenForRender } from './waitForRender';
 import { validate } from 'schema-utils';
-import deepMerge from './merge';
+import deepMerge from '../merge';
 
 export default class PuppeteerRenderer implements IRenderer {
   private puppeteer!: Browser;
@@ -177,7 +178,11 @@ export default class PuppeteerRenderer implements IRenderer {
       return result;
     } catch (e) {
       console.log(chalk.red(`Could not prerender route: ${route}`));
-      console.log(chalk.red(`Please check whether the route can be accessed normally and whether it contains redirection. Please handle the redirection page yourself.`));
+      console.log(
+        chalk.red(
+          `Please check whether the route can be accessed normally and whether it contains redirection. Please handle the redirection page yourself.`,
+        ),
+      );
       return {};
     } finally {
       await page.close();

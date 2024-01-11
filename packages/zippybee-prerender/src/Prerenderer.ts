@@ -4,7 +4,6 @@ import IRenderer, { RendererConstructor, RenderedRoute } from './IRenderer';
 import PackageName from './PackageName';
 import { validate } from 'schema-utils';
 import deepMerge from './merge';
-console.log(deepMerge, 7);
 type HookCallback = (server: Server) => void;
 
 export default class Prerenderer {

@@ -1,12 +1,11 @@
-import Prerenderer from '@zippybee/prerender';
-import PuppeteerRenderer from '@zippybee/prerender-puppteer';
+import renderTool from '@zippybee/prerender';
 import path from 'path';
 import fs from 'fs';
 import chalk from 'chalk';
 import { RenderPluginType } from './type';
 import { mkdirp } from 'mkdirp';
 
-export const RenderDom = PuppeteerRenderer;
+console.log(renderTool, 10);
 
 export const renderStart = async (options: RenderPluginType, outDir: string) => {
   console.log(`All-routers:[${chalk.green(`${options.routers.join(', ')}`)}] `);
@@ -24,10 +23,10 @@ export const renderStart = async (options: RenderPluginType, outDir: string) => 
   //   删除 rendererOptions
   delete options.renderOptions;
 
-  const prerenderer = new Prerenderer({
+  const prerenderer = new renderTool.Prerenderer({
     ...options,
     staticDir: options.staticDir || '',
-    renderer: new PuppeteerRenderer(merge_render_config),
+    renderer: new renderTool.PuppeteerRenderer(merge_render_config),
   });
 
   try {

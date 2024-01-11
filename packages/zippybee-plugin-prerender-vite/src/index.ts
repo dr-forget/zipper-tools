@@ -24,13 +24,19 @@ export function prerender(options?: RenderPluginType): Plugin {
     },
     closeBundle() {
       console.log(chalk.green(`preRender start:`));
+
       const render_config: RenderPluginType = {
-        staticDir: path.join(config.root, config.build.outDir),
+        staticDir: path.isAbsolute(config.build.outDir) ? config.build.outDir : path.join(config.root, config.build.outDir),
+        
         routers: [],
-        indexPath: path.join(config.root, config.build.outDir, 'index.html'),
+        indexPath: path.isAbsolute(config.build.outDir)
+          ? path.join(config.build.outDir, 'index.html')
+          : path.join(config.root, config.build.outDir, 'index.html'),
         server: {},
       };
+
       const run_config = Object.assign(render_config, options);
+
       renderStart(run_config, outputPath);
     },
   };

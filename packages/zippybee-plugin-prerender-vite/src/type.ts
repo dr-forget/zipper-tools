@@ -1,4 +1,4 @@
-import { PuppeteerRendererOptions } from '@zippybee/prerender-puppteer';
+import { PuppeteerRendererOptions } from '@zippybee/prerender';
 export interface RenderPluginType {
   staticDir?: string;
   outputDir?: string;
