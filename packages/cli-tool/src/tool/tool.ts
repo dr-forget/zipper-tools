@@ -4,7 +4,6 @@ import chalk from 'chalk';
 import baseConfig from './base.config';
 import crypto from 'crypto';
 import { CustomConfigProps } from './type';
-import { buildSync } from 'esbuild';
 import { merge } from 'lodash-es';
 
 interface IConfigFile {

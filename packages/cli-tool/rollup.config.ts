@@ -99,7 +99,7 @@ export default [
         ? customTerser({
             compress: {
               dead_code: true,
-              drop_console: true,
+              drop_console: false,
               drop_debugger: true,
             },
             mangle: {
