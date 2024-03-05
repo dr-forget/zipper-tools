@@ -1,6 +1,6 @@
 {
   "name": "@zippybee/plugin-cdn-import",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Import packages from CDN for the vite plugin",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -31,6 +31,6 @@
   "author": "vfasky<vfasky@me.com>",
   "license": "MIT",
   "dependencies": {
-    "rollup-plugin-external-globals": "^0.9.1"
+    "rollup-plugin-external-globals": "^0.9.2"
   }
 }
