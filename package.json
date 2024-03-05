@@ -11,14 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/lodash-es": "^4.17.12",
-    "rollup": "^4.9.1",
+    "rollup": "^4.12.0",
     "rollup-plugin-cleandir": "^2.0.0",
-    "vite": "^5.0.10"
+    "vite": "^5.1.5"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.11.24",
     "fast-glob": "^3.3.2",
     "typescript": "^5.3.3"
   }
