@@ -1,0 +1,23 @@
+{
+  "name": "zippybee-iconfont",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development rollup -c rollup.config.ts --configPlugin typescript  -w",
+    "build": "NODE_ENV=production rollup -c rollup.config.ts --configPlugin typescript ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compressing": "^1.10.0",
+    "fast-glob": "^3.3.2",
+    "qiniu": "^7.11.0",
+    "rimraf": "^5.0.5"
+  }
+}
