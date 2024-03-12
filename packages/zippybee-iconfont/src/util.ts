@@ -66,7 +66,6 @@ export async function handleRename(filePath: string) {
 
 // 匹配文件
 export async function matchFile(path: string, suffix: string[]) {
-  console.log('匹配文件的路径', path);
   const files = await fg(suffix, { dot: true, cwd: path });
   return files;
 }

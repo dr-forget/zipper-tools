@@ -38,14 +38,13 @@ export class ZippyIconfont {
     let bucketPath = '';
 
     const redirpath = path.join(__dirname, 'iconfont');
-    for (let i = 0; i <= need_oss.length; i++) {
-      const item = need_oss[i];
-      // @ts-ignore
-      await obj[item]?.(files, redirpath, config[item]);
-      // @ts-ignore
-      bucketPath = config[item]?.bucketPath;
-    }
 
+    // 只需要一个配置就行
+    const item = need_oss[0];
+    // @ts-ignore
+    await obj[item]?.(files, redirpath, config[item]);
+    // @ts-ignore
+    bucketPath = config[item]?.bucketPath;
     // 修改iconfont链接
     replaceIconfontLink(redirpath, this.config.cdn_url, bucketPath, this.config.local_path);
   }
