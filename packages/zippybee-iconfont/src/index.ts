@@ -46,6 +46,8 @@ export class ZippyIconfont {
     // @ts-ignore
     bucketPath = config[item]?.bucketPath;
     // 修改iconfont链接
-    replaceIconfontLink(redirpath, this.config.cdn_url, bucketPath, this.config.local_path);
+    if (this.config.local_path) {
+      replaceIconfontLink(redirpath, this.config.cdn_url, bucketPath, this.config.local_path);
+    }
   }
 }
