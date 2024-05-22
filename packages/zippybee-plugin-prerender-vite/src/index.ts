@@ -27,7 +27,7 @@ export function prerender(options?: RenderPluginType): Plugin {
 
       const render_config: RenderPluginType = {
         staticDir: path.isAbsolute(config.build.outDir) ? config.build.outDir : path.join(config.root, config.build.outDir),
-        
+
         routers: [],
         indexPath: path.isAbsolute(config.build.outDir)
           ? path.join(config.build.outDir, 'index.html')
