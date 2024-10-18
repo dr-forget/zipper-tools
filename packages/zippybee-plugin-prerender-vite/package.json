@@ -1,6 +1,6 @@
 {
   "name": "@zippybee/plugin-prerender-vite",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "",
   "module": "lib/index.mjs",
   "main": "lib/index.js",
