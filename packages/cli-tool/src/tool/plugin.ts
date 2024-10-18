@@ -1,12 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import react from '@vitejs/plugin-react';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
-import { importToCDN, autoComplete } from '@zippybee/plugin-cdn-import';
 import AutoComponents from 'unplugin-vue-components/vite';
+import { importToCDN, autoComplete } from '@zippybee/plugin-cdn-import';
 import { ModuleName } from '@zippybee/plugin-cdn-import/dist/auto-complete';
 import { createHtmlPlugin } from '@zippybee/plugin-html';
 import { CustomConfigProps } from './type';
@@ -71,22 +70,22 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
     const pkg = read_backend_envconfig('package.json');
     // 获取html模板路径
     const template_path = path.join(process.cwd(), template || 'index.html');
-    plugins.push(
-      createHtmlPlugin({
-        minify: true,
-        template: template_path,
-        inject: {
-          data: {
-            ...baseConfig.html_plugin.injectData,
-            injectScript: `<script id="runconfig">window.zippybeecli_backend = ${JSON.stringify({
-              ...config_json,
-              buildTime: +new Date(),
-              version: pkg.version,
-            })}</script>`,
-          },
+
+    const html_plugins = createHtmlPlugin({
+      minify: true,
+      template: template_path,
+      inject: {
+        data: {
+          ...baseConfig.html_plugin.injectData,
+          injectScript: `<script id="runconfig">window.zippybeecli_backend = ${JSON.stringify({
+            ...config_json,
+            buildTime: +new Date(),
+            version: pkg.version,
+          })}</script>`,
         },
-      }),
-    );
+      },
+    });
+    plugins.push(...(html_plugins as PluginOption[]));
   }
   // cdn插件
   if (baseConfig.package_cdn.modules.length > 0) {
