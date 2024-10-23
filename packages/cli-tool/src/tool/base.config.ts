@@ -32,6 +32,7 @@ const config: CustomConfigProps = {
     dirs: [],
     resolvers: [],
   },
+  isAutoImportApi: {},
   // 其他自定义vite配置
   custom_vite_config: () => {
     return {};

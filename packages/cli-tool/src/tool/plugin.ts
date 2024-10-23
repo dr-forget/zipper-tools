@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import AutoComponents from 'unplugin-vue-components/vite';
+import AutoImportApi from 'unplugin-auto-import/vite';
 import { importToCDN, autoComplete } from '@zippybee/plugin-cdn-import';
 import { ModuleName } from '@zippybee/plugin-cdn-import/dist/auto-complete';
 import { createHtmlPlugin } from '@zippybee/plugin-html';
@@ -114,6 +115,8 @@ const insert_plugin = (technology_stack: 'vue' | 'react', baseConfig: CustomConf
   if (baseConfig.isAutoComponent && baseConfig.isAutoComponent.resolvers?.length && technology_stack == 'vue') {
     plugins.push(AutoComponents({ ...baseConfig.isAutoComponent }));
   }
+  // 注入自动导入api
+  plugins.push(AutoImportApi(baseConfig.isAutoImportApi || {}));
   return plugins;
 };
 

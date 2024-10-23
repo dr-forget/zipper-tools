@@ -2,6 +2,7 @@ import { UserConfig, ConfigEnv } from 'vite';
 import { Module } from '@zippybee/plugin-cdn-import/dist/type';
 import { ModuleName } from '@zippybee/plugin-cdn-import/dist/auto-complete';
 import { Options } from 'unplugin-vue-components';
+import { Options as AutoImportOptions } from 'unplugin-auto-import/types';
 
 export interface zippyEnv extends ConfigEnv {
   env: string;
@@ -33,5 +34,6 @@ export interface CustomConfigProps {
     cdnUrl?: string;
   };
   isAutoComponent: Options;
+  isAutoImportApi?: AutoImportOptions;
   custom_vite_config: (data: zippyEnv) => UserConfig | Promise<UserConfig>;
 }
