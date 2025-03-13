@@ -2,7 +2,7 @@ import Prerenderer from '../Prerenderer';
 import chalk from 'chalk';
 import promiseLimit from 'promise-limit';
 import puppeteer, { Browser, Page } from 'puppeteer';
-import IRenderer, {  RenderedRoute } from '../IRenderer';
+import IRenderer, { RenderedRoute } from '../IRenderer';
 import { PuppeteerRendererFinalOptions, PuppeteerRendererOptions, schema, defaultOptions } from './Options';
 import { waitForRender, listenForRender } from './waitForRender';
 import { validate } from 'schema-utils';
@@ -78,7 +78,7 @@ export default class PuppeteerRenderer implements IRenderer {
         );
       }
     }
-    this.puppeteer = await puppeteer.launch({ headless: headless ? 'new' : false, args, ...(launchOptions || legacyOptions) });
+    this.puppeteer = await puppeteer.launch({ headless: headless ? 'shell' : false, args, ...(launchOptions || legacyOptions) });
   }
 
   async handleRequestInterception(page: Page, baseURL: string) {
