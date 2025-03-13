@@ -1,6 +1,6 @@
 {
   "name": "@zippybee/prerender",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Fast, flexible, framework-agnostic prerendering for sites and SPAs.",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
